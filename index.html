@@ -11,20 +11,25 @@
       --light-pink: #ffe4e9;
       --white: #fff;
       --gray: #444;
+      --soft-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #ffe4e9, #fff0f5);
+      background: linear-gradient(120deg, #ffe4e9, #fff0f5, #ffeaf1);
       color: var(--gray);
       overflow-x: hidden;
     }
 
     header {
       background-color: var(--white);
-      padding: 20px 40px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 16px 30px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -35,28 +40,32 @@
 
     header h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 2.5em;
+      font-size: 2.3em;
       color: var(--pink);
       margin: 0;
+      letter-spacing: 1px;
     }
 
     nav a {
-      margin: 0 15px;
+      margin: 0 10px;
       text-decoration: none;
       color: var(--pink);
       font-weight: 600;
-      font-size: 1.1em;
-      transition: color 0.3s;
+      font-size: 1em;
+      padding: 6px 10px;
+      border-radius: 20px;
+      transition: background-color 0.25s, color 0.25s;
     }
 
     nav a:hover {
-      color: #d94c66;
+      background-color: var(--pink);
+      color: var(--white);
     }
 
     section {
       padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
+      max-width: 950px;
+      margin: 0 auto;
       display: none;
       animation: fadeIn 0.8s ease-in-out;
     }
@@ -65,15 +74,41 @@
       display: block;
     }
 
+    .card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 18px;
+      padding: 26px 22px;
+      box-shadow: var(--soft-shadow);
+    }
+
     h2 {
-      font-size: 2em;
+      font-size: 2.1em;
       color: var(--pink);
-      margin-bottom: 20px;
+      margin: 0 0 18px 0;
+    }
+
+    h3 {
+      font-size: 1.4em;
+      color: var(--pink);
+      margin-top: 24px;
+      margin-bottom: 10px;
     }
 
     p {
-      font-size: 1.2em;
-      line-height: 1.6;
+      font-size: 1.05em;
+      line-height: 1.7;
+      margin: 10px 0;
+    }
+
+    .highlight-name {
+      font-weight: 700;
+      color: var(--pink);
+    }
+
+    .tagline {
+      font-size: 1em;
+      opacity: 0.9;
+      margin-bottom: 18px;
     }
 
     .gallery {
@@ -81,18 +116,65 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      margin-top: 30px;
+      margin-top: 25px;
     }
 
     .gallery img {
-      width: 250px;
-      border-radius: 12px;
+      width: 240px;
+      max-width: 100%;
+      border-radius: 14px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      object-fit: cover;
     }
 
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    }
+
+    .reasons-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .reasons-list li::before {
+      content: "• ";
+      color: var(--pink);
+      font-weight: bold;
+    }
+
+    .reasons-list li {
+      margin-bottom: 6px;
+      font-size: 0.98em;
+    }
+
+    .timeline {
+      margin-top: 12px;
+    }
+
+    .timeline-item {
+      margin-bottom: 14px;
+      padding-left: 12px;
+      border-left: 3px solid var(--pink);
+    }
+
+    .timeline-item span {
+      display: block;
+      font-weight: 600;
+      color: var(--pink);
+      margin-bottom: 4px;
+    }
+
+    .quote-box {
+      margin-top: 18px;
+      padding: 14px 18px;
+      border-left: 4px solid var(--pink);
+      background: #fff8fb;
+      border-radius: 10px;
+      font-style: italic;
+      font-size: 0.98em;
     }
 
     button {
@@ -101,14 +183,25 @@
       border: none;
       padding: 12px 24px;
       font-size: 1em;
-      border-radius: 8px;
+      border-radius: 999px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.1s;
       margin-top: 20px;
     }
 
     button:hover {
       background-color: #d94c66;
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .note {
+      font-size: 0.9em;
+      opacity: 0.85;
+      margin-top: 6px;
     }
 
     @keyframes fadeIn {
@@ -118,10 +211,29 @@
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 16px;
       background-color: var(--light-pink);
       font-size: 0.9em;
       color: var(--gray);
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      section {
+        padding: 40px 14px;
+      }
+      h2 {
+        font-size: 1.8em;
+      }
     }
   </style>
 </head>
@@ -132,72 +244,249 @@
       <a href="#" onclick="showSection('home')">Home</a>
       <a href="#" onclick="showSection('story')">Our Story</a>
       <a href="#" onclick="showSection('gallery')">Gallery</a>
+      <a href="#" onclick="showSection('future')">Future</a>
       <a href="#" onclick="showSection('letter')">Love Letter</a>
     </nav>
   </header>
 
+  <!-- HOME -->
   <section id="home" class="active">
-    <h2>Hi Kavya 💕</h2>
-    <p>This website is a gift from your Babyboy, Pushkar Khatri. I made it to show you how deeply I love you — in every line, every pixel, every heartbeat.</p>
-    <div class="gallery">
-      <img src="kavya3.png" alt="kavya smiling">
-      <img src="kavya1.png" alt="Kavya Smiling">
-      <img src="kavya2.png" alt="Kavya Smiling">
+    <div class="card">
+      <h2>Hi Kavya 💕</h2>
+      <p class="tagline">This little corner of the internet belongs only to you, <span class="highlight-name">my Kavu</span>.</p>
+      <p>
+        This website is a gift from your Babyboy, <span class="highlight-name">Pushkar Khatri</span.>
+        Every color, every line of code, and every word here is just another way of saying one thing:
+        you mean the world to me.
+      </p>
+      <p>
+        When people ask me what love feels like, I wish I could just show them this page—
+        because it has our memories, our chaos, our peace, our distance, and still our forever.
+        You turned my ordinary days into something I actually look forward to.
+      </p>
+
+      <h3>Why You Are My Person ✨</h3>
+      <ul class="reasons-list">
+        <li>Your smile can fix even the worst kind of day I have.</li>
+        <li>You know my flaws and still choose me, again and again.</li>
+        <li>Talking to you feels like finally reaching home after a long day.</li>
+        <li>You push me to be better, even when I feel like giving up.</li>
+        <li>You are not just my girlfriend, you’re my favorite habit.</li>
+      </ul>
+
+      <div class="gallery">
+        <img src="images/kavya3.png" alt="Us Together">
+        <img src="images/kavya1.png" alt="Kavya Smiling">
+        <img src="images/kavya2.png" alt="Kavya Smiling Close-up">
+      </div>
     </div>
   </section>
 
+  <!-- OUR STORY -->
   <section id="story">
-    <h2>Our Story</h2>
-    <p>💖 Our Story: It All Started with a Roll NumberThis is the part of the website I was most excited to write. Our story is kind of a movie, honestly.So, we were in the same school, me in science, you in commerce. Funny thing is, we knew each other better online than in person—just following each other on Instagram, checking out snaps, that kind of thing. We never actually talked face-to-face until late in 11th grade. The first time we spoke? You needed my roll number for a periodic test. Seriously, that’s how it started! Then, during the annual exams, you finally texted me. We just talked and talked, and eventually, you dropped the bomb: you liked me. That was our very first real interaction, and that feeling was the best.</p>
-        
-    <p>   Our relationship wasn't perfect right away—it was messy. We went from being friends to being lovers, and that journey was seriously great. We’ve been through a lot of fights, broken up, gotten back together, and all that drama. But we always found our way back. Now, we’re finally on the same page, and I just want this chapter to be infinite. I want to grow old and die with you, that’s the goal.</p>
-        
-    <p>   Thinking about our dates just makes me smile. Our first one was that crazy scooty ride on Koni Road. We also have our spots: Cafe Yuva, MacDonald's, and especially Urban Bistro—which is my absolute favorite, for reasons you know very well! I won't use up too many words here, though; I'm saving a lot of this stuff for your love letter!</p>
-        
-    <p>   Things got tough when your dad found out, and we had to break up for a while. Then, after 12th grade, we went long-distance—you went to DU for UG, and I took a drop for IIT JEE. Even though we were apart, we started talking again, planning everything around me getting into IIT DELHI the next year so we could be together. The universe had other plans. On my advance day, I had a 103 fever and hadn't slept, but I still cracked the exam. I just didn't get the IIT I’d hoped for.</p>
-        
-     <P>  I hated the idea of being long-distance, but here we are, trying our best. I'm sitting here in Raipur at nit raipur hostel, missing you like crazy, and making this website. You're chilling in Gautam Nagar at Yash PG. I miss you a lot, and I love you even more, my kuchupuchu.Your babyboy</p>
-  </section>
+    <div class="card">
+      <h2>Our Story 🎬</h2>
+      <p>
+        Our story honestly feels like a movie, but the best part is that it’s real, and it’s ours.
+        We were in the same school—me in science, you in commerce—yet somehow we existed more as
+        Instagram IDs than real people for a long time.
+      </p>
+      <p>
+        We followed each other, saw each other’s stories, knew each other’s names,
+        but didn’t really talk. The universe had its own slow-burn script for us.
+        We didn’t know it back then, but we were already part of each other’s background.
+      </p>
 
-  <section id="gallery">
-    <h2>Our Memories 📸</h2>
-    <p>Here are some of our favorite moments together. Each photo is a chapter in our love story.</p>
-    <div class="gallery">
-      <img src="us4.jpg" alt="Laughing Together">
-      
-      <img src="us2.jpg" alt="Laughing Together">
-      <img src="us5.jpg" alt="Laughing Together">
-      
-      <img src="us7.jpg" alt="Laughing Together">
-      <img src="us8.jpg" alt="Laughing Together">
-      
-      <img src="us10.jpg" alt="Laughing Together">
+      <h3>It All Started With a Roll Number 📚</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>That one test day</span>
+          <p>
+            The first time we actually spoke in real life was when you asked me for my roll number
+            for a periodic test. Of all the ways a love story could start, ours began with
+            “Roll number bata do na” energy.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <span>Annual exams & first texts</span>
+          <p>
+            During the annual exams, you finally texted me. One message turned into a conversation,
+            the conversation turned into late-night talks, and somewhere in between,
+            you quietly dropped the truth—you liked me. That moment still lives rent-free in my heart.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <span>From friends to lovers</span>
+          <p>
+            Our start was messy and imperfect, but real. We went from random school acquaintances,
+            to friends, to people who couldn’t imagine a day without each other.
+            Fights happened, drama happened, breakups happened—but somehow, we always found our way back.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        We created our own little universe with scooty rides, inside jokes, and endless chats.
+        It wasn’t a filmy “perfect couple” story; it was better than that—it was honest,
+        stubborn, emotional, and ours.
+      </p>
+
+      <h3>Our Favorite Dates & Places 🍟</h3>
+      <p>
+        Thinking about our dates automatically puts a smile on my face.
+        Our first proper one was that crazy scooty ride on Koni Road,
+        with wind, traffic, and your laughter mixing into the best kind of chaos.
+      </p>
+      <p>
+        We collected places like memories:
+        Cafe Yuva, McDonald’s, and especially <span class="highlight-name">Urban Bistro</span>—
+        the place that means way more to us than any fancy location ever could.
+        You already know exactly why that place is so special.
+      </p>
+
+      <div class="quote-box">
+        “If someone asked me what my favorite story is, I’d say: the one where
+        a roll number request turned into a lifetime of love.”
+      </div>
+
+      <h3>Distance, Drops and Determination 💔➡️💪</h3>
+      <p>
+        Things got tough when your dad found out and we had to break up for a while.
+        Those days were heavy. Then after 12th, life pulled us into different cities—
+        you went to DU for UG, and I took a drop for IIT JEE.
+        Even apart, our hearts never really left each other.
+      </p>
+      <p>
+        We started talking again, building dreams carefully:
+        me working hard to get into IIT Delhi so I could be with you.
+        On my JEE Advance day, I had a 103 fever and barely any sleep,
+        but I still gave the exam and cracked it—just not the IIT we had imagined.
+      </p>
+
+      <p>
+        I hated the idea of long-distance, but here we are—doing something
+        I once thought I could never handle. Right now I’m in Raipur at my NIT Raipur hostel,
+        and you’re in Gautam Nagar at Yash PG. We are in different cities,
+        but somehow, you are still the closest person to me.
+      </p>
+
+      <div class="quote-box">
+        “No matter the distance, your name still feels like home.”
+      </div>
+
+      <p>
+        I miss you more than words can carry, but I love you even more than that.
+        This website is just one small way of sending a piece of my heart to you,
+        wherever you open it from.
+      </p>
+      <p class="note">Always and forever, your Babyboy 🩷</p>
     </div>
   </section>
 
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="card">
+      <h2>Our Memories 📸</h2>
+      <p>
+        These are not just photos for me—they’re paused moments of the life
+        I get to live with you. Each picture holds a version of us that I never want to forget.
+      </p>
+      <p>
+        Some are from our best days, some from random ones,
+        but every single one reminds me that life feels extra beautiful
+        when you are in the frame with me.
+      </p>
+
+      <div class="gallery">
+        <!-- Existing images -->
+        <img src="images/us4.jpg" alt="Scooty ride on Koni Road">
+        <img src="images/us3.jpg" alt="Date night and laughter">
+        <img src="images/us2.jpg" alt="Laughing together">
+
+        <!-- New images (update file names as per your images) -->
+        <img src="images/us5.jpg" alt="Selfie together on a cute day">
+        <img src="images/us6.jpg" alt="Candid moment, you laughing">
+        <img src="images/us7.jpg" alt="A cozy picture of us together">
+      </div>
+
+      <div class="quote-box">
+        “Some people frame photos on walls; I frame them in my heart.
+        But here, I got to do both—for you.”
+      </div>
+    </div>
+  </section>
+
+  <!-- FUTURE -->
+  <section id="future">
+    <div class="card">
+      <h2>Our Future Plans 🌈</h2>
+      <p>
+        We’ve handled school, family drama, distance, exams, heartbreak, and healing—
+        so it’s only fair that the future owes us a soft, peaceful, happy life together.
+        And that’s exactly what I’m working towards every single day.
+      </p>
+      <p>
+        When I picture my future, it’s not just a job or a city or a house.
+        It’s you making fun of me while I study, us deciding what to eat,
+        us planning trips, us existing together in the same space,
+        without hostel timings or PG rules between us.
+      </p>
+
+      <h3>Little Dreams With You 💭</h3>
+      <ul class="reasons-list">
+        <li>Late-night walks where we actually walk, not worry about “last bus kab ka hai”.</li>
+        <li>Study dates where I stare at you more than my books (as usual).</li>
+        <li>A home where your laughter is the background sound of every room.</li>
+        <li>Trips where we don’t have to lie about “group study” plans.</li>
+        <li>Growing old with you and still teasing you like it’s day one.</li>
+      </ul>
+
+      <p>
+        One day, this won’t be a “long-distance love story”. It will just be
+        a love story where two people who refused to give up
+        finally get the peace they always deserved—with each other.
+      </p>
+      <p class="note">
+        Until that day, I’ll keep choosing you in every message, every call,
+        every decision, and every tomorrow.
+      </p>
+    </div>
+  </section>
+
+  <!-- LOVE LETTER -->
   <section id="letter">
-    <h2>Love Letter 💌</h2>
-    <p>Click below to read the full letter I wrote for you, my Kavu. It’s filled with memories, emotions, and a poem just for you.</p>
-    <a href="love-letter.pdf" target="_blank">
-      <button>Read the Love Letter 💖</button>
-    </a>
+    <div class="card">
+      <h2>Love Letter 💌</h2>
+      <p>
+        Some feelings are too big to fit on a single page,
+        so your love letter lives in its own little space.
+        It’s filled with our memories, my promises, silly nicknames,
+        and the kind of honesty that only you bring out of me.
+      </p>
+      <p>
+        Whenever you miss me, or we fight, or the distance feels too loud,
+        you can open that letter and remember that no matter what,
+        I’m the guy who made you a whole website just to say “I love you”.
+      </p>
+
+      <a href="love-letter.pdf" target="_blank">
+        <button>Read the Love Letter 💖</button>
+      </a>
+      <p class="note">Warning: High emotional content and maximum babyboy energy ahead.</p>
+    </div>
   </section>
 
   <footer>
-    Made with endless love by Pushkar Khatri for Kavya Yadav 💘
+    Made with endless love by Babyboy, Pushkar Khatri, for his Kavu, Kavya Yadav 💘
   </footer>
 
   <script>
     function showSection(id) {
       document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(id).classList.add('active');
+      // Scroll to top when section changes
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
 </body>
-
 </html>
-
-
-
-
-
